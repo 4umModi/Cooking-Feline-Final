@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RecipeManager : MonoBehaviour {
 
@@ -66,15 +67,20 @@ public class RecipeManager : MonoBehaviour {
         //call the execute method of the current step
         InstructionSteps[currentStep].Execute();
         //AddCommand(InstructionSteps[currentStep].Execute());
-        if (currentStep < InstructionSteps.Length-1)
+        if (currentStep < InstructionSteps.Length - 1)
         {
             currentStep++;
             centerText.text = InstructionSteps[currentStep].instructiontext;
 
             //play audio voiceover file for the current step
-            stepNumAudio = currentStep+1; //need increment bc step 1 is stored @ index 0
+            stepNumAudio = currentStep + 1; //need increment bc step 1 is stored @ index 0
             step = "step" + stepNumAudio;
             FindObjectOfType<AudioManager>().Play(step);
+        }
+        //if user is on last step
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
@@ -94,10 +100,12 @@ public class RecipeManager : MonoBehaviour {
 
     // checks if gesture is correct and moves to next step
     public void GestureDetected(string gesture){
+
         if (gesture == InstructionSteps[currentStep].gestureNeeded)
         {
             this.NextStep(); // call for next step
         }
+
     }
 
     // GO FORWARD - move forward one step in the recipe

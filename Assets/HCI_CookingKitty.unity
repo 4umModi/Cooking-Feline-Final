@@ -1575,7 +1575,7 @@ MonoBehaviour:
   - toggle: {fileID: 1150608063}
     stepNumber: 7
     instructiontext: 7. Spread Jelly
-    gestureNeeded: spread
+    gestureNeeded: swipe
     stepDisplay: {fileID: 596423417}
   - toggle: {fileID: 2011065512}
     stepNumber: 8
@@ -4560,9 +4560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c829a06ead5fea44c977bdcbf214728b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gestureDetected:
-    m_PersistentCalls:
-      m_Calls: []
+  manager: {fileID: 0}
 --- !u!1 &1355472866
 GameObject:
   m_ObjectHideFlags: 0

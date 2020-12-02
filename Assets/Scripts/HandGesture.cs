@@ -216,19 +216,34 @@ public class HandGesture : MonoBehaviour
         //checks all previous frames if any of the previous frames are not a gesture,
         //then a gesture has been detected
         // IDEA: what if we change to see if the same gesture exists (previous scoop/swipe etc)
-        if (gesture != "none" && frame_buffer.Count > 10)
+        if (gesture != "none" && frame_buffer.Count > 1)
         {
             for (int i=frame_buffer.Count-1; i>=0; i--)
             {
                 if (frame_buffer[i] == "none") 
                 {
                     Debug.Log(gesture); // print gesture to console
-                    manager.GestureDetected(gesture); // send message that gesture was detected
+                    manager.GestureDetected(gesture);// send message that gesture was detected
+                    resetArray(gesture); //reset array to be filled with gesture string so no duplicated
                     return;
                 }
-                if (i == 0) return;
+                if (i == 0)
+                {
+                    manager.GestureDetected("none");
+                    return;
+                }
             }
         }
+        manager.GestureDetected("none");
+        return;
+    }
 
+    //resets Array to be filled with gesture so there are no duplicates
+    void resetArray(string gesture) 
+    {
+        for (int i=frame_buffer.Count-1; i>=0; i--) 
+        {
+            frame_buffer[i] = gesture;
+        }
     }
 }
