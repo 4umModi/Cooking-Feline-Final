@@ -15,8 +15,8 @@ public class AudioManager : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-
-        if(instance == null) // we only want one instance of AudioManager btwn scenes
+        // we only want one instance of AudioManager btwn scenes
+        if(instance == null)
             instance = this;
         else
         {
@@ -26,28 +26,30 @@ public class AudioManager : MonoBehaviour {
 
         DontDestroyOnLoad(gameObject); // keep same AudioManager instance btwn scenes
 
-        // list of sounds we'll be using; edit info in the inspector
+        // list of sounds we'll be using
         foreach (Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
-
+            
+            //can edit vol/pitch/loop info in the inspector
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
     }
 
-    // to play step 2 audio when @ step 2 in recipe, go to spot
-    // in code where the steps are advanced and do this:
+    // to play step X audio when @ step X in recipe, go to spot
+    // in code where the steps are advanced/undone and do this:
     /*
-        FindObjectOfType<AudioManager>().Play("step2");
+        FindObjectOfType<AudioManager>().Play("stepX");
         >> see brackeys audio tutorial @ ~10:00
-        >> will have to check the current step #, then play that # step w above call
+        >> will have to check the current step #
     */
+
     void Start(){ // plays upon scene start
         Play("cookingMusic");
-        //Play("step1");
+        Play("step1");
     }
 
     public void Play(string name){

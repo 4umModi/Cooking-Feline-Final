@@ -24,6 +24,9 @@ public class RecipeManager : MonoBehaviour {
 
     //What step we are on
     private int currentStep = 0;
+    //needed for playing voiceover audio
+    private int stepNumAudio = 0;
+    private string step = "";
 
     private void Awake() {
         Debug.Log("Awakening");
@@ -68,6 +71,11 @@ public class RecipeManager : MonoBehaviour {
         {
             currentStep++;
             centerText.text = InstructionSteps[currentStep].instructiontext;
+
+            //play audio voiceover file for the current step
+            stepNumAudio = currentStep+1; //need increment bc step 1 is stored @ index 0
+            step = "step" + stepNumAudio;
+            FindObjectOfType<AudioManager>().Play(step);
         }
     }
 
@@ -77,6 +85,11 @@ public class RecipeManager : MonoBehaviour {
         {
             currentStep--;
             centerText.text = InstructionSteps[currentStep].instructiontext;
+
+            //play audio voiceover file for the current step
+            stepNumAudio = currentStep+1; //need increment bc step 1 is stored @ index 0
+            step = "step" + stepNumAudio;
+            FindObjectOfType<AudioManager>().Play(step);
         }
     }
 

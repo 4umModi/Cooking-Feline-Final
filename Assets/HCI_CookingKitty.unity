@@ -4042,49 +4042,43 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: step2
-    clip: {fileID: 8300000, guid: 1e3d99d945aae264294a1cd5ed44897f, type: 3}
+    clip: {fileID: 8300000, guid: 9d259e76d6e38484bbae2f8b46c8af4a, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: step3
-    clip: {fileID: 8300000, guid: a28b94c7c3bcd3e47be46128d9701131, type: 3}
+    clip: {fileID: 8300000, guid: 4cfed1809e6f86d44860dfe3d207ffef, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: step4
-    clip: {fileID: 8300000, guid: 3ee50232bbc4e9240a602abab332bcec, type: 3}
+    clip: {fileID: 8300000, guid: 39d0c96ef76b2f040be945504a3b6d9e, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
+  - name: step5
+    clip: {fileID: 8300000, guid: 75668b3fc02786e44872d6cb9bfb5c68, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
+  - name: step6
+    clip: {fileID: 8300000, guid: eba0e6d1c8ecd5e40a6649b19c2818d1, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
+  - name: step7
+    clip: {fileID: 8300000, guid: e5bdb56f1ae89f24581f95d1ca090474, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: 
-    clip: {fileID: 0}
+  - name: step8
+    clip: {fileID: 8300000, guid: 8d1fdcb12529acb4198208f5eb15db82, type: 3}
     volume: 1
     pitch: 1
     loop: 0
