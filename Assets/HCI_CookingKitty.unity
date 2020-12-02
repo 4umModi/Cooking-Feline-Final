@@ -4031,7 +4031,7 @@ MonoBehaviour:
   sounds:
   - name: cookingMusic
     clip: {fileID: 8300000, guid: 330007d1b6cf1c147b0537a0ecc8c73d, type: 3}
-    volume: 0.3
+    volume: 0.2
     pitch: 1
     loop: 1
     source: {fileID: 0}
