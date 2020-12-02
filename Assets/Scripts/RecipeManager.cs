@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using TMPro;
 
 public class RecipeManager : MonoBehaviour {
@@ -90,6 +89,14 @@ public class RecipeManager : MonoBehaviour {
             stepNumAudio = currentStep+1; //need increment bc step 1 is stored @ index 0
             step = "step" + stepNumAudio;
             FindObjectOfType<AudioManager>().Play(step);
+        }
+    }
+
+    // checks if gesture is correct and moves to next step
+    public void GestureDetected(string gesture){
+        if (gesture == InstructionSteps[currentStep].gestureNeeded)
+        {
+            this.NextStep(); // call for next step
         }
     }
 

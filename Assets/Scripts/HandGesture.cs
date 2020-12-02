@@ -1,11 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using Leap;
 using Leap.Unity;
-
-[System.Serializable] public class _UnityEventString:UnityEvent<string> {} // create a class for gesture event with string argument
 
 public class HandGesture : MonoBehaviour
 {
@@ -18,9 +15,14 @@ public class HandGesture : MonoBehaviour
     int count; // number of objects in queue
     int buffer_flag; //flag for once buffer is full
     List<string> frame_buffer; // buffer to hold past frames
-    [Header("This is an event for gesture detection!")]
-     public _UnityEventString gestureDetected; // UnityEvent for gesture detection
+    public RecipeManager manager; // use to call methods from RecipleManager
 
+   
+    void Awake() 
+    {
+        manager = GameObject.Find("Manager").GetComponent<RecipeManager>(); // define manager object
+    }
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,12 @@ public class HandGesture : MonoBehaviour
         frame_buffer = new List<string>();
         buffer_flag = 0;
         count = 0;
+      /*  try {
+            manager = GameObject.Find("Manager").GetComponent<RecipeManager>();
+        }
+        catch {
+            Debug.Log("Error");
+        }*/
     }
 
     // Manage adding to frames queue and maintaining length
@@ -129,10 +137,10 @@ public class HandGesture : MonoBehaviour
                 }
             }
         }
-        if (grab) return ("grab gesture");
-        if (pinch && !grab) return ("pinch gesture");
-        if (swipe) return ("swipe gesture");
-        if (scoop) return ("scoop gesture");
+        if (grab) return ("grab");
+        if (pinch && !grab) return ("pinch");
+        if (swipe) return ("swipe");
+        if (scoop) return ("scoop");
         return "none";
     }
 
@@ -215,7 +223,7 @@ public class HandGesture : MonoBehaviour
                 if (frame_buffer[i] == "none") 
                 {
                     Debug.Log(gesture); // print gesture to console
-                    gestureDetected.Invoke(gesture); // call event
+                    manager.GestureDetected(gesture); // send message that gesture was detected
                     return;
                 }
                 if (i == 0) return;
