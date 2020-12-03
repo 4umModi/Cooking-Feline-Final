@@ -7,27 +7,34 @@ using UnityEngine.SceneManagement;
 
 public class RecipeManager : MonoBehaviour {
 
-
+    //create RecipeManager instance
     private static RecipeManager _instance;
 
+    //gets instance
     public static RecipeManager Instance { get { return _instance; } }
 
+    //gets list of commands
     private List<ICommand> _commandBuffer = new List<ICommand>();
-    //private List<Instruction> _instructionBuffer = new List<Instruction>();
 
+    //text variable (we can fill in inspector)
     [Header("The middle display text")]
     public TextMeshProUGUI centerText;
 
+    //instruction object (we can fill in inspector when dragging this script on an object)
     [Header("Add new Instruction Steps here")]
     [Tooltip("An 'Instruction' notes if the step has been completed, has the step number, and the text to be displayed")]
     public Instruction [] InstructionSteps;
 
+
+    //instruction object variables (we can fill in inspector when dragging this script on an object)
+   
     //What step we are on
     private int currentStep = 0;
     //needed for playing voiceover audio
     private int stepNumAudio = 0;
     private string step = "";
 
+    //before first frame, resets instance
     private void Awake() {
         Debug.Log("Awakening");
         if (_instance != null && _instance != this) {
@@ -37,8 +44,10 @@ public class RecipeManager : MonoBehaviour {
         }
     }
 
+    // Start is called before the first frame update
     void Start () {
         Debug.Log("Starting manager!");
+
         //goes through the written instructions
         for(int i = 0; i < InstructionSteps.Length; i++){
             //assigns the string to the TMP gui 
@@ -56,13 +65,7 @@ public class RecipeManager : MonoBehaviour {
         centerText.text = InstructionSteps[0].instructiontext;
     }
 
-    //adds commands to the Command Buffer
-    // public void AddCommand (ICommand command) {
-    //     _commandBuffer.Add(command);
-    //     //_instructionBuffer.Add(command);
-    //     Debug.Log("ADD command - ");
-    // }
-
+    //calls next recipe step
     public void NextStep(){
         //call the execute method of the current step
         InstructionSteps[currentStep].Execute();
@@ -85,6 +88,7 @@ public class RecipeManager : MonoBehaviour {
         }
     }
 
+    //sets to previous recipe step
     public void PreviousStep(){
         InstructionSteps[currentStep].Undo();
         if (currentStep != 0)
@@ -109,57 +113,9 @@ public class RecipeManager : MonoBehaviour {
 
     }
 
-    // GO FORWARD - move forward one step in the recipe
-    // public void GoForward() {
-    // 	Debug.Log("Going forward - start");
-    //     StartCoroutine(GoForwardRoutine());
-    //     Debug.Log("Going forward - end");
-
-    // }
-
-    // GO FORWARD ROUTINE - executes the command
-    // IEnumerator GoForwardRoutine() {
-    //     Debug.Log("Running GoForwardRoutine.... ");
-    //     foreach(var command in _commandBuffer){ // TODO: Replace _commandBuffer with _instructionBuffer
-    //     	Debug.Log("Executing " + command);
-    //         command.Execute();
-    //         yield return new WaitForSeconds(1.0f);
-    //     }
-    //     Debug.Log("Finished GoForwardRoutine");
-    // }
-
-    // // GO BACKWARD - moves bakcward one step in the recipe
-    // public void GoBackward () {
-    // 	Debug.Log("Going backward - start");
-    //     StartCoroutine(GoBackwardRoutine());
-    //     Debug.Log("Going backward - end");
-    // }
-    
-    // // GO BACKWARD ROUTINE - executes the command
-    // IEnumerator GoBackwardRoutine() {
-    // 	Debug.Log("Running GoBackwardRoutine.... ");
-    //     foreach(var command in Enumerable.Reverse(_commandBuffer)){ // TODO: Replace _commandBuffer with _instructionBuffer
-    //     	Debug.Log("Undoing " + command);
-    //         command.Undo();
-    //         yield return new WaitForSeconds(1.0f);
-    //     }     
-    //     Debug.Log("Finished GoBackwardRoutine");   
-    // }
-    
-    /*
-    public void Done() {
-        var cubes = GameObject.FindGameObjectsWithTag("cube");
-        foreach(var cube in cubes){
-           cube.GetComponent<MeshRenderer>().material.color = Color.white;
-           Debug.Log("Done");
-        }
-    }
-    */
-
-    
+    //resets buffer
     public void Reset(){
         _commandBuffer.Clear();
-        //_instructionBuffer.Clear();
     }
 }
 
