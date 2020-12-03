@@ -10,11 +10,13 @@ public class MainMenu : MonoBehaviour{
         SceneManager.LoadScene(1);
     }
 
+    // button to go to settings/instructions menu
     public void SettingsGame()
     {
         SceneManager.LoadScene(3);
     }
 
+    // button to return to the main menu
     public void GoMainMenu()
     {
         SceneManager.LoadScene(0);
