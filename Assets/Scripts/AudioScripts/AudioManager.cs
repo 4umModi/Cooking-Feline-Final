@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-    public Sound[] sounds;
+    public Sound[] sounds; // list to hold our audio files
 
     public static AudioManager instance;
 
@@ -46,14 +46,17 @@ public class AudioManager : MonoBehaviour {
         >> see brackeys audio tutorial @ ~10:00
         >> will have to check the current step #
     */
+    // to STOP an audio file playing: FindObjectOfType<AudioManager>().StopPlaying(name);
 
-    void Start(){ // plays upon scene start
+    // plays upon scene start
+    void Start(){ 
         Play("cookingMusic");
         Play("step1");
     }
 
+    // starts an audio file in-game
     public void Play(string name){
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == name); // find the file w matching name
         if(s == null){
             Debug.LogWarning("Sound: " + name + " not found!");
             return; // upon typo, don't play a sound that doesn't exit
@@ -61,12 +64,13 @@ public class AudioManager : MonoBehaviour {
         s.source.Play();
     }
 
+    // stops an audio file in-game
     public void StopPlaying (string name){
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == name); // find the file w matching name
         if (s == null){
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
         s.source.Stop();
-     } //FindObjectOfType<AudioManager>().StopPlaying(step);
+     }
 }

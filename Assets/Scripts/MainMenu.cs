@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿/*
+    referenced tutorial: "START MENU in Unity" by Brackeys YT channel
+    https://www.youtube.com/watch?v=zc8ac_qUXQY
+*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
