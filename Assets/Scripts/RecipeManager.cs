@@ -80,6 +80,7 @@ public class RecipeManager : MonoBehaviour {
         //if user is on last step
         else
         {
+            FindObjectOfType<AudioManager>().StopPlaying("cookingMusic"); // stop playing cooking music
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
