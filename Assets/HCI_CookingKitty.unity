@@ -4011,7 +4011,7 @@ GameObject:
   - component: {fileID: 1247454066}
   - component: {fileID: 1247454068}
   m_Layer: 5
-  m_Name: Bread 1
+  m_Name: Bread1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4114,12 +4114,12 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1247454066}
   toggleTransition: 1
-  graphic: {fileID: 1217466035}
+  graphic: {fileID: 556707038}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 556707036}
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
@@ -4129,8 +4129,8 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-  m_IsOn: 0
+        m_CallState: 0
+  m_IsOn: 1
 --- !u!1 &1287752264
 GameObject:
   m_ObjectHideFlags: 0
@@ -5495,7 +5495,7 @@ GameObject:
   - component: {fileID: 1661241383}
   - component: {fileID: 1661241385}
   m_Layer: 5
-  m_Name: Bread 2
+  m_Name: Bread2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5598,12 +5598,23 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1661241383}
   toggleTransition: 1
-  graphic: {fileID: 556707038}
+  graphic: {fileID: 1217466035}
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
-  m_IsOn: 0
+      m_Calls:
+      - m_Target: {fileID: 1217466033}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
+  m_IsOn: 1
 --- !u!1 &1719827769 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1134614293111738, guid: 2d8859ed4f0e9c74ba81853c168f11fe,
